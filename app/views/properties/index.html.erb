@@ -1,0 +1,30 @@
+<h1>
+  List
+</h1>
+
+<h2>Property List</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Rent</th>
+    <th>Adress</th>
+    <th>Age</th>
+    <th>Notes</th>
+  </tr>
+
+  <% @properties.each do |p| %>
+    <tr>
+      <td><%= p.name %></td>
+      <td><%= p.rent %>円</td>
+      <td><%= p.address %></td>
+      <td><%= p.age %>年</td>
+      <td><%= p.notes %></td>
+      <td><%= link_to 'Details', property_path(p.id) %>
+      <td><%= link_to 'Edit', edit_property_path(p.id) %></td>
+      <td><%= link_to 'Delete', property_path(p.id), method: :delete,data: {confirm: '本当に削除していいですか？'} %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Register a property', new_property_path %>

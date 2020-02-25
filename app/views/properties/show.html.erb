@@ -1,0 +1,19 @@
+<h1>Details</h1>
+
+<p>Property Name:<%= @property.name %></p>
+<p>Rent:<%= @property.rent %>円</p>
+<p>Adress:<%= @property.address %></p>
+<p>Age:<%= @property.age %>年</p>
+<p class="last_form">Remarks:<%= @property.notes %></p>
+
+<% i = 1 %>
+<% @property.stations.each do |p| %>
+  <h3>Nearest Station<%= i %></h3>
+  <p>Road name:<%= p.line_name %></p>
+  <p>Station Name:<%= p.station_name %></p>
+  <p>Walk Minute:<%= p.walk_minutes %>分</p>
+  <% i += 1 %>
+<% end %>
+
+<%= link_to 'Edit', edit_property_path(@property.id) %>
+<%= link_to 'Back', properties_path %>

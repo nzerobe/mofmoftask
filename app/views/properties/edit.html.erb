@@ -1,0 +1,57 @@
+<h1>Ed</h1>
+
+<h2>Edit</h2>
+
+<%= form_for(@property) do |f| %>
+  <div class="form">
+    <p><%= f.label :name %></p>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="form">
+    <p><%= f.label :rent %></p>
+    <%= f.text_field :rent %>
+  </div>
+
+  <div class="form">
+    <p><%= f.label :address %></p>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="form">
+    <p><%= f.label :age %></p>
+    <%= f.text_field :age %>
+  </div>
+
+  <div class="last_form">
+    <p><%= f.label :notes %></p>
+    <%= f.text_area :notes %><br>
+  </div><br>
+
+<!-- 最寄り駅の登録 -->
+  <% i = 1 %>
+  <%= f.fields_for :stations do |s| %>
+
+    <p>最寄り駅<%= p i %></p>
+    <div class="form">
+      <p><%= s.label :line_name %></p>
+      <%= s.text_field :line_name %>
+    </div>
+
+    <div class="form">
+      <p><%= s.label :station_name %></p>
+      <%= s.text_field :station_name %>
+    </div>
+
+    <div class="form">
+      <p><%= s.label :walk_minutes %></p>
+      <%= s.text_field :walk_minutes %>
+    </div>
+    <% i += 1 %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= link_to '詳細', property_path(@property.id) %>
+<%= link_to '戻る', properties_path %>
